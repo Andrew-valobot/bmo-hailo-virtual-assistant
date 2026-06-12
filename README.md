@@ -55,7 +55,7 @@ ollama pull gemma4:e2b
 ```
 
 ### 4. Clone & Setup Environment
-This project requires **Python 3.11** for maximum compatibility with the audio and AI libraries on the ARM64 architecture.
+This project requires **Python 3.13** for maximum compatibility with the audio and AI libraries on the ARM64 architecture.
 
 ```bash
 git clone [https://github.com/YOUR_USERNAME/bmo-hailo-assistant.git](https://github.com/YOUR_USERNAME/bmo-hailo-assistant.git)
