@@ -34,3 +34,48 @@ Ensure your Raspberry Pi OS (Debian Trixie/Bookworm) is up to date and the Hailo
 ```bash
 sudo apt update && sudo apt upgrade -y
 sudo apt install hailo-all git -y
+
+
+```
+### 2. Install Miniforge (Conda)
+To prevent Python environment conflicts on the Pi5
+
+```bash
+wget [https://github.com/conda-forge/miniforge/releases/latest/download/Miniforge3-Linux-aarch64.sh](https://github.com/conda-forge/miniforge/releases/latest/download/Miniforge3-Linux-aarch64.sh)
+bash Miniforge3-Linux-aarch64.sh
+
+```
+
+### 3. Install Ollama & Models
+
+```bash
+curl -fsSL [https://ollama.com/install.sh](https://ollama.com/install.sh) | sh
+ollama pull gemma2:2b
+
+```
+
+### 4. Clone & Setup Environment
+
+```bash
+git clone [https://github.com/YOUR_USERNAME/bmo-hailo-assistant.git](https://github.com/YOUR_USERNAME/bmo-hailo-assistant.git)
+cd bmo-hailo-assistant
+
+# Create and activate the conda environment
+conda create -n bmo_env python=3.11 -y
+conda activate bmo_env
+
+# Install dependencies
+pip install -r requirements.txt
+
+```
+
+### 5. Configure the Wake Word
+  1- Download the default "Hey Jarvis" model (or train your own at OpenWakeWord).
+  2- Place the .onnx file in the root folder and rename it to wakeword.onnx.
+
+### 6. Run the Agent
+```bash
+conda activate bmo_env
+python main.py
+
+```
