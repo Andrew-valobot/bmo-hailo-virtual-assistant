@@ -61,8 +61,8 @@ This project requires **Python 3.11** for maximum compatibility with the audio a
 git clone [https://github.com/YOUR_USERNAME/bmo-hailo-assistant.git](https://github.com/YOUR_USERNAME/bmo-hailo-assistant.git)
 cd bmo-hailo-assistant
 
-# Create and activate the conda environment with Python 3.11
-conda create -n bmo_env python=3.11 -y
+# Create and activate the conda environment with Python 3.13
+conda create -n bmo_env python=3.13 -y
 conda activate bmo_env
 ```
 
