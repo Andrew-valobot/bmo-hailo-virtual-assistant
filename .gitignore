@@ -1,49 +1,38 @@
 # --- Python Artifacts ---
 __pycache__/
-*.py[cod]
-*$py.class
+*.pyc
+*.pyo
+*.pyd
 .Python
-build/
-develop-eggs/
-dist/
-downloads/
-eggs/
-.eggs/
-
-# --- Virtual Environments ---
-venv/
 env/
-bmo_env/
-.conda/
-
-# --- Environment Variables & Secrets ---
+venv/
 .env
-config.json
 
-# --- Large Models & Binaries (AI Hardware) ---
-# Ignore Piper TTS folder (OS-specific and heavy)
+# --- Large Models & Binaries (Auto-downloaded) ---
+# Ignore the Piper TTS folder (it's huge and OS-specific)
 piper/
 
-# Ignore local AI model weights
+# Ignore large model files
 *.onnx
 *.bin
 *.tflite
-*.hef
-*.gguf
 
 # Exception: Un-comment the line below if you WANT to share your custom wake word
 # !wakeword.onnx
 
 # --- User Configuration & Memory ---
-# Keep chat history local for privacy
+# Keep chat history local (Privacy)
 memory.json
 chat_memory.json
+
+# Keep personal API keys or settings local
+# (Optional: comment this out if you WANT to share your config)
+# config.json
 
 # --- Temporary/Generated Media ---
 *.wav
 *.mp3
 *.jpg
-*.jpeg
 *.png
 camera_capture.jpg
 current_image.jpg
@@ -54,10 +43,14 @@ test_audio.wav
 Thumbs.db
 ehthumbs.db
 
-# --- Installers & Packages ---
-*.deb
-*.whl
+# -------------------------
 
-# Exception: Allow specific installers in the vault folder
+venv/
+bmoo_env/
+__pycache__/
+*.tflite
+*.onnx
+*.whl
+*.deb
 !vault/installers/*.whl
 !vault/installers/*.deb
