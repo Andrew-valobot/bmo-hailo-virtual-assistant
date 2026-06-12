@@ -9,7 +9,7 @@ This project turns a Raspberry Pi 5 into a fully functional, multimodal conversa
 
 ## ✨ Features & Upgrades
 
-* **100% Local Intelligence**: Powered by **Ollama** running `gemma2:2b` and **Whisper.cpp** (Speech-to-Text). No API fees, completely private.
+* **100% Local Intelligence**: Powered by **Ollama** running `gemma4:e2b` and **Whisper.cpp** (Speech-to-Text). No API fees, completely private.
 * **Hardware-Accelerated Vision**: Replaced CPU vision models with **Hailo-8L** GStreamer pipelines (`yolov8` and `yolov5_personface`) for 30 FPS real-time object and person detection without taxing the main CPU.
 * **Open Source Wake Word**: Wakes up to custom models using **OpenWakeWord** (Offline & Free).
 * **Smart Web Search**: Uses DuckDuckGo to find real-time news when the LLM needs internet context.
@@ -50,7 +50,7 @@ bash Miniforge3-Linux-aarch64.sh
 
 ```bash
 curl -fsSL [https://ollama.com/install.sh](https://ollama.com/install.sh) | sh
-ollama pull gemma2:2b
+ollama pull gemma4:e2b
 
 ```
 
