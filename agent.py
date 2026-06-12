@@ -216,6 +216,8 @@ class BotGUI:
         # Inputs
         master.bind('<Return>', self.handle_ptt_toggle)
         master.bind('<space>', self.handle_speaking_interrupt)
+        # Tecla 'v' para encender/apagar la visión en vivo del Hailo
+        master.bind('<v>', lambda e: self.toggle_hailo_live_view())
         atexit.register(self.safe_exit)
         
         # State
@@ -509,7 +511,32 @@ class BotGUI:
              return "IMAGE_CAPTURE_TRIGGERED"
 
         return None
+    def toggle_hailo_live_view(self):
+        """Enciende o apaga la ventana de pruebas de visión en tiempo real con YOLOv8."""
+        if hasattr(self, 'hailo_cam_process') and self.hailo_cam_process is not None:
+            print("[VISION] Cerrando ventana de pruebas de Hailo...", flush=True)
+            self.hailo_cam_process.terminate()
+            self.hailo_cam_process.wait()
+            self.hailo_cam_process = None
+            self.set_state(BotStates.IDLE, "Listo")
+            return
 
+        self.set_state(BotStates.CAPTURING, "Visión Activa")
+        print("[VISION] Iniciando acelerador Hailo con YOLOv8...", flush=True)
+        
+        def launch_camera():
+            cmd = [
+                "rpicam-hello", 
+                "-t", "0", 
+                "--post-process-file", "/usr/share/rpi-camera-assets/hailo_yolov8_inference.json",
+                "--info-text", "B-mo Live Eyes"
+            ]
+            try:
+                self.hailo_cam_process = subprocess.Popen(cmd, stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
+            except Exception as e:
+                print(f"[VISION ERROR] Fallo al iniciar la cámara: {e}")
+
+        threading.Thread(target=launch_camera, daemon=True).start()
     # =========================================================================
     # 4. CORE LOGIC
     # =========================================================================
