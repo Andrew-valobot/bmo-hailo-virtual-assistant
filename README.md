@@ -55,19 +55,19 @@ ollama pull gemma4:e2b
 ```
 
 ### 4. Clone & Setup Environment
+This project requires **Python 3.11** for maximum compatibility with the audio and AI libraries on the ARM64 architecture.
 
 ```bash
 git clone [https://github.com/YOUR_USERNAME/bmo-hailo-assistant.git](https://github.com/YOUR_USERNAME/bmo-hailo-assistant.git)
 cd bmo-hailo-assistant
 
-# Create and activate the conda environment
+# Create and activate the conda environment with Python 3.11
 conda create -n bmo_env python=3.11 -y
 conda activate bmo_env
-
-# Install dependencies
-pip install -r requirements.txt
-
 ```
+
+Install Dependencies:
+The project relies on specific hardware-audio and local LLM libraries. You can install them all at once using the requirements.txt file:
 
 ### 5. Configure the Wake Word
   1- Download the default "Hey Jarvis" model (or train your own at OpenWakeWord).
